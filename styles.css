@@ -32,9 +32,14 @@ body {
     display: block;
 }
 
-h1, h2 {
-    margin-bottom: 20px;
+h1 {
+    margin-bottom: 10px;
     color: #f7f7f7; /* Soft white color for the titles */
+}
+
+h2 {
+    font-style: italic;
+    color: #f7f7f7;
 }
 
 /* Input containers styling */
@@ -133,6 +138,10 @@ input, button {
     color: #4caf50;
 }
 
+.nav-btn i {
+    margin-right: 5px;
+}
+
 /* Contact Developer Page */
 #contact-developer-page {
     background: linear-gradient(to bottom, #00c6ff, #0072ff);
@@ -165,7 +174,7 @@ input, button {
     color: white;
     font-size: 20px;
     border-radius: 50%;
-    display: flex;
+    display: none;  /* Initially hidden */
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -206,4 +215,20 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+/* No Rides Available Popup */
+#no-rides-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    display: none;
+    z-index: 150;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }

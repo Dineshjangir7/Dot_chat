@@ -1,23 +1,14 @@
-// Predefined list of Indian locations (updated with Delhi and Rajasthan cities)
-const locations = [
-    "Mumbai", "Pune", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad",
-    "Jaipur", "Udaipur", "Ahmedabad", "Lucknow", "Patna", "Indore", "Goa", 
-    "Agra", "Nagpur", "Varanasi", "Bhopal", "Chandigarh", "Rajasthan", "Jodhpur", 
-    "Surat", "Vadodara", "Rishikesh", "Noida", "Greater Noida", "Gurgaon"
-];
-
-// Vehicle Models
-const vehicleModels = [
-    "Honda Civic", "Toyota Innova", "Tata Nexon", "Hyundai Verna",
-    "Mahindra XUV500", "Ford EcoSport", "BMW 5 Series", "Mercedes-Benz C-Class"
-];
-
-// Global variables
 let userPhoneNumber = "";
-let userProfile = {};
+let userProfile = {
+    name: "",
+    phone: ""
+};
+
+let locations = ['Delhi', 'Jaipur', 'Mumbai', 'Chennai', 'Bangalore', 'Udaipur', 'Agra', 'Noida', 'Gurgaon'];
+let vehicleModels = ['Maruti Suzuki', 'Honda City', 'Hyundai Verna', 'Toyota Fortuner', 'Mahindra XUV500'];
 let postedRides = [];
 
-// Show the page based on the selected option
+// Show pages based on navigation
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('visible');
@@ -25,8 +16,10 @@ function showPage(pageId) {
     document.getElementById(pageId).classList.add('visible');
     if (pageId !== 'login-page') {
         document.getElementById('nav-bar').style.display = 'flex';  // Show nav-bar after login
+        document.getElementById('contact-developer-btn').style.display = 'block';  // Show developer button after login
     } else {
         document.getElementById('nav-bar').style.display = 'none'; // Hide nav-bar on login page
+        document.getElementById('contact-developer-btn').style.display = 'none'; // Hide developer button before login
     }
 }
 
@@ -102,10 +95,17 @@ function searchRides() {
     const filteredRides = postedRides.filter(ride => 
         ride.from === from && 
         ride.to === to && 
-        new Date(ride.date) >= new Date(date)
+        new Date(ride.date) >= new Date() && new Date(ride.date) <= new Date(date)
     );
 
     let rideResults = document.getElementById('ride-results');
+    if (filteredRides.length === 0) {
+        document.getElementById('no-rides-popup').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('no-rides-popup').style.display = 'none';
+        }, 3000); // Hide popup after 3 seconds
+    }
+
     rideResults.innerHTML = filteredRides.map(ride => `
         <div>
             <strong>Driver: ${ride.driverName}</strong><br>
@@ -121,9 +121,9 @@ function searchRides() {
 
 // Save Profile Information
 function saveProfile() {
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('set-name-input').value;
     userProfile.name = name;
-    document.getElementById('profile-phone').innerText = userProfile.phone;
+    document.getElementById('profile-name').innerText = `Name: ${userProfile.name}`;
+    document.getElementById('profile-phone').innerText = `Phone Number: ${userProfile.phone}`;
     alert("Profile saved successfully!");
 }
-

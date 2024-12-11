@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Set Go</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
 <!-- Login Screen -->
 <div id="login-page" class="page visible">
-    <h1>Get Set Go</h1>
+    <h1>Get Set Go!</h1>
     <h2>by Dinesh</h2>
     <input type="tel" id="phone" placeholder="Enter your 10-digit phone number" maxlength="10">
     <button class="rounded-btn" onclick="login()">Login</button>
@@ -49,13 +50,15 @@
         <input type="tel" id="contact" placeholder="Contact Number" class="rounded-input">
         <input type="date" id="ride-date" class="rounded-input">
         
-        <!-- AM/PM Time Selection -->
+        <!-- AM/PM time selection -->
+        <input type="number" id="depart-hour" placeholder="Hour" min="1" max="12" class="rounded-input">
+        <input type="number" id="depart-minute" placeholder="Minute" min="0" max="59" class="rounded-input">
         <select id="depart-time" class="rounded-input">
             <option value="AM">AM</option>
             <option value="PM">PM</option>
         </select>
-        <input type="number" id="depart-hour" placeholder="Hour (1-12)" class="rounded-input" min="1" max="12">
-        <input type="number" id="depart-minute" placeholder="Minute (00-59)" class="rounded-input" min="0" max="59">
+        
+        <input type="text" id="name" placeholder="Driver's Name (Required)" class="rounded-input">
         
         <button class="rounded-btn" onclick="postRide()">Post Ride</button>
     </div>
@@ -64,34 +67,42 @@
 <!-- Profile Page -->
 <div id="profile-page" class="page">
     <h2>Your Profile</h2>
-    <p><strong>Phone Number:</strong> <span id="profile-phone"></span></p>
-    <input type="text" id="name" placeholder="Your Name" class="rounded-input">
+    <p id="profile-name">Name: <span id="profile-name-text">Not Set</span></p>
+    <p id="profile-phone">Phone Number: <span id="profile-phone-text">Not Set</span></p>
+    <button class="rounded-btn" onclick="showPage('home-page')">Go to Home</button>
+    <button class="rounded-btn" onclick="showPage('set-name-page')">Set Name</button> <!-- Button to set name -->
+</div>
+
+<!-- Set Name Page -->
+<div id="set-name-page" class="page">
+    <h2>Set Your Name</h2>
+    <input type="text" id="set-name-input" placeholder="Enter your name">
     <button class="rounded-btn" onclick="saveProfile()">Save</button>
 </div>
 
 <!-- Contact Developer Page -->
 <div id="contact-developer-page" class="page">
     <h2>Contact Developer</h2>
-    <p><strong>Name:</strong> Dinesh Jangir</p>
-    <p><strong>Telegram:</strong> @dj3680</p>
+    <p>Name: Dinesh Jangir</p>
+    <p>Telegram: @dj3680</p>
     <div class="warning">
-        <p>⚠️ Please travel at your own risk. I'll not be responsible for any accidents or scams that happen during your journey. ⚠️</p>
+        <p>⚠️ Please travel at your own risk, I’ll not be responsible for any accidents or scams. ⚠️</p>
     </div>
-    <button class="rounded-btn" onclick="showPage('home-page')">Back to Home</button>
+    <button class="rounded-btn" onclick="showPage('home-page')">Go to Home</button>
 </div>
 
+<!-- No Rides Popup -->
+<div id="no-rides-popup">No rides available on this date for this route</div>
+
 <!-- Navigation Bar -->
-<div id="nav-bar" class="nav-bar" style="display: none;">
-    <button class="nav-btn" onclick="showPage('home-page')">🏠 Home</button>
-    <button class="nav-btn" onclick="showPage('post-ride-page')">➕ Post</button>
-    <button class="nav-btn" onclick="showPage('profile-page')">👤 Profile</button>
-    <button class="nav-btn" onclick="showPage('contact-developer-page')">📞 Contact</button>
+<div id="nav-bar" class="nav-bar visible">
+    <button class="nav-btn" onclick="showPage('home-page')"><i class="fas fa-home"></i> Home</button>
+    <button class="nav-btn" onclick="showPage('post-ride-page')"><i class="fas fa-car"></i> Post Ride</button>
+    <button class="nav-btn" onclick="showPage('profile-page')"><i class="fas fa-user"></i> Profile</button>
 </div>
 
 <!-- Floating Contact Developer Button -->
-<div id="contact-developer-btn" onclick="showPage('contact-developer-page')">
-    📞
-</div>
+<button id="contact-developer-btn" onclick="showPage('contact-developer-page')">📱</button>
 
 <script src="script.js"></script>
 </body>
