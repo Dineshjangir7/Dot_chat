@@ -16,18 +16,6 @@
         <input type="password" id="login-password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="#" id="show-signup">Signup</a></p>
-</div>
-
-<!-- Signup Section -->
-<div class="container" id="signup-section" style="display: none;">
-    <h1>Dot Chat - Signup</h1>
-    <form id="signup-form">
-        <input type="text" id="signup-username" placeholder="Username" required>
-        <input type="password" id="signup-password" placeholder="Password" required>
-        <button type="submit">Signup</button>
-    </form>
-    <p>Already have an account? <a href="#" id="show-login">Login</a></p>
 </div>
 
 <!-- Chat Section -->
@@ -43,8 +31,20 @@
     </form>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/backendless@6.1.8/backendless.min.js"></script>
-<script src="script.js"></script>
+<script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = document.getElementById('login-username').value;
+        document.getElementById('display-username').textContent = username || 'Guest';
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('chat-section').style.display = 'block';
+    });
+
+    document.getElementById('logout').addEventListener('click', function() {
+        document.getElementById('chat-section').style.display = 'none';
+        document.getElementById('login-section').style.display = 'block';
+    });
+</script>
 
 </body>
 </html>
