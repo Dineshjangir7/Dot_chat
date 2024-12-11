@@ -5,77 +5,77 @@ const API_KEY = "DEB56D47-5FB3-4AC1-9DF6-806F79AF23FF";
 Backendless.initApp(APP_ID, API_KEY);
 
 // DOM Elements
-const loginForm = document.getElementById("login-form");
-const messageForm = document.getElementById("message-form");
-const chatSection = document.getElementById("chat-section");
 const loginSection = document.getElementById("login-section");
-const chatBox = document.getElementById("chat-box");
+const homeSection = document.getElementById("home-section");
+const profileSection = document.getElementById("profile-section");
+const chatSection = document.getElementById("chat-section");
+const qrSection = document.getElementById("qr-section");
+
+const loginForm = document.getElementById("login-form");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
 const displayUsername = document.getElementById("display-username");
-const logoutBtn = document.getElementById("logout");
 
-// Login or Signup
-loginForm.addEventListener("submit", async (e) => {
+const profileButton = document.getElementById("profile-button");
+const chatButton = document.getElementById("chat-button");
+const qrButton = document.getElementById("qr-button");
+
+const logoutButton = document.getElementById("logout");
+const backToHomeProfile = document.getElementById("back-to-home");
+const backToHomeChat = document.getElementById("back-to-home-chat");
+const backToHomeQR = document.getElementById("back-to-home-qr");
+
+// Login / Signup
+loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    try {
-        await Backendless.UserService.register({
-            username,
-            password,
-        });
-        loginSuccess(username);
-    } catch (error) {
-        try {
-            const user = await Backendless.UserService.login(username, password, true);
-            loginSuccess(user.username);
-        } catch (error) {
-            alert("Login failed: " + error.message);
-        }
+    if (username && password) {
+        displayUsername.textContent = username;
+        loginSection.style.display = "none";
+        homeSection.style.display = "block";
+    } else {
+        alert("Please enter a valid username and password.");
     }
 });
 
-// Handle Login Success
-function loginSuccess(username) {
-    displayUsername.textContent = username;
-    loginSection.style.display = "none";
+// Navigation Buttons
+profileButton.addEventListener("click", () => {
+    homeSection.style.display = "none";
+    profileSection.style.display = "block";
+});
+
+chatButton.addEventListener("click", () => {
+    homeSection.style.display = "none";
     chatSection.style.display = "block";
-    loadMessages();
-}
+});
+
+qrButton.addEventListener("click", () => {
+    homeSection.style.display = "none";
+    qrSection.style.display = "block";
+});
 
 // Logout
-logoutBtn.addEventListener("click", async () => {
-    await Backendless.UserService.logout();
+logoutButton.addEventListener("click", () => {
+    homeSection.style.display = "none";
     loginSection.style.display = "block";
-    chatSection.style.display = "none";
+    usernameInput.value = "";
+    passwordInput.value = "";
 });
 
-// Load Messages
-function loadMessages() {
-    Backendless.Data.of("Messages").find()
-        .then((messages) => {
-            chatBox.innerHTML = "";
-            messages.forEach((msg) => {
-                const messageElement = document.createElement("div");
-                messageElement.textContent = `${msg.sender}: ${msg.text}`;
-                chatBox.appendChild(messageElement);
-            });
-        });
-}
+// Back Buttons
+backToHomeProfile.addEventListener("click", () => {
+    profileSection.style.display = "none";
+    homeSection.style.display = "block";
+});
 
-// Send Messages
-messageForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const messageInput = document.getElementById("message-input");
-    const messageText = messageInput.value;
-    const username = displayUsername.textContent;
+backToHomeChat.addEventListener("click", () => {
+    chatSection.style.display = "none";
+    homeSection.style.display = "block";
+});
 
-    if (messageText.trim() !== "") {
-        await Backendless.Data.of("Messages").save({
-            text: messageText,
-            sender: username,
-        });
-        messageInput.value = "";
-        loadMessages();
-    }
+backToHomeQR.addEventListener("click", () => {
+    qrSection.style.display = "none";
+    homeSection.style.display = "block";
 });
