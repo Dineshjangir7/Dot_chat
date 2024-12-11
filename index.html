@@ -3,60 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dot Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Get Set Go</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Login Section -->
-    <div class="container" id="login-section">
-        <h1>Dot Chat</h1>
-        <form id="login-form">
-            <input type="text" id="username" placeholder="Enter Username" required>
-            <input type="password" id="password" placeholder="Enter Password" required>
-            <button type="submit">Login / Signup</button>
-        </form>
-    </div>
 
-    <!-- Home Screen -->
-    <div class="container" id="home-section" style="display: none;">
-        <header>
-            <h2>Welcome, <span id="display-username"></span></h2>
-            <button id="logout">Logout</button>
-        </header>
-        <nav>
-            <button id="profile-button">Profile</button>
-            <button id="chat-button">Chat</button>
-            <button id="qr-button">Scan QR</button>
-        </nav>
-    </div>
+<!-- Login Screen -->
+<div id="login-page" class="page visible">
+    <h1>Get Set Go</h1>
+    <h2>by Dinesh</h2>
+    <input type="tel" id="phone" placeholder="Enter your 10-digit phone number" maxlength="10">
+    <button class="rounded-btn" onclick="login()">Login</button>
+</div>
 
-    <!-- Profile Section -->
-    <div class="container" id="profile-section" style="display: none;">
-        <h2>Edit Profile</h2>
-        <input type="file" id="profile-pic-input" accept="image/*">
-        <textarea id="bio-input" placeholder="Write your bio..."></textarea>
-        <button id="save-profile">Save</button>
-        <button id="back-to-home">Back</button>
-    </div>
+<!-- Home Page -->
+<div id="home-page" class="page">
+    <h2>Find a Ride</h2>
+    <div class="input-container">
+        <input type="text" id="from" placeholder="From" onkeyup="showSuggestions('from')" class="rounded-input">
+        <div id="from-suggestions" class="suggestions"></div>
+        
+        <input type="text" id="to" placeholder="To" onkeyup="showSuggestions('to')" class="rounded-input">
+        <div id="to-suggestions" class="suggestions"></div>
 
-    <!-- Chat Section -->
-    <div class="container" id="chat-section" style="display: none;">
-        <h2>Chat</h2>
-        <div id="chat-box"></div>
-        <form id="message-form">
-            <input type="text" id="message-input" placeholder="Type a message...">
-            <button type="submit">Send</button>
-        </form>
-        <button id="back-to-home-chat">Back</button>
+        <input type="date" id="date" class="rounded-input">
+        <button class="rounded-btn" onclick="searchRides()">Search</button>
     </div>
+    <div id="ride-results"></div>
+</div>
 
-    <!-- QR Section -->
-    <div class="container" id="qr-section" style="display: none;">
-        <h2>Scan QR</h2>
-        <p>Feature coming soon...</p>
-        <button id="back-to-home-qr">Back</button>
+<!-- Post Ride Page -->
+<div id="post-ride-page" class="page">
+    <h2>Post a Ride</h2>
+    <div class="input-container">
+        <input type="text" id="post-from" placeholder="From" onkeyup="showSuggestions('post-from')" class="rounded-input">
+        <div id="post-from-suggestions" class="suggestions"></div>
+        
+        <input type="text" id="post-to" placeholder="To" onkeyup="showSuggestions('post-to')" class="rounded-input">
+        <div id="post-to-suggestions" class="suggestions"></div>
+        
+        <input type="number" id="seats" placeholder="Seats Available" class="rounded-input">
+        <input type="number" id="price" placeholder="Price per Seat" class="rounded-input">
+        <input type="text" id="vehicle" placeholder="Vehicle Model" onkeyup="showVehicleSuggestions()" class="rounded-input">
+        <div id="vehicle-suggestions" class="suggestions"></div>
+        <input type="tel" id="contact" placeholder="Contact Number" class="rounded-input">
+        <input type="date" id="ride-date" class="rounded-input">
+        
+        <!-- AM/PM Time Selection -->
+        <select id="depart-time" class="rounded-input">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+        <input type="number" id="depart-hour" placeholder="Hour (1-12)" class="rounded-input" min="1" max="12">
+        <input type="number" id="depart-minute" placeholder="Minute (00-59)" class="rounded-input" min="0" max="59">
+        
+        <button class="rounded-btn" onclick="postRide()">Post Ride</button>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<!-- Profile Page -->
+<div id="profile-page" class="page">
+    <h2>Your Profile</h2>
+    <p><strong>Phone Number:</strong> <span id="profile-phone"></span></p>
+    <input type="text" id="name" placeholder="Your Name" class="rounded-input">
+    <button class="rounded-btn" onclick="saveProfile()">Save</button>
+</div>
+
+<!-- Contact Developer Page -->
+<div id="contact-developer-page" class="page">
+    <h2>Contact Developer</h2>
+    <p><strong>Name:</strong> Dinesh Jangir</p>
+    <p><strong>Telegram:</strong> @dj3680</p>
+    <div class="warning">
+        <p>⚠️ Please travel at your own risk. I'll not be responsible for any accidents or scams that happen during your journey. ⚠️</p>
+    </div>
+    <button class="rounded-btn" onclick="showPage('home-page')">Back to Home</button>
+</div>
+
+<!-- Navigation Bar -->
+<div id="nav-bar" class="nav-bar" style="display: none;">
+    <button class="nav-btn" onclick="showPage('home-page')">🏠 Home</button>
+    <button class="nav-btn" onclick="showPage('post-ride-page')">➕ Post</button>
+    <button class="nav-btn" onclick="showPage('profile-page')">👤 Profile</button>
+    <button class="nav-btn" onclick="showPage('contact-developer-page')">📞 Contact</button>
+</div>
+
+<!-- Floating Contact Developer Button -->
+<div id="contact-developer-btn" onclick="showPage('contact-developer-page')">
+    📞
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
