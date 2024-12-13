@@ -17,7 +17,7 @@ body {
 header {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 1px 0;
+    padding: 20px 0;
     text-align: center;
     position: fixed;
     top: 0;
@@ -57,7 +57,7 @@ header nav ul li a:hover {
     background: url('main.webp') no-repeat center center/cover;
     color: #DCC7B6;
     text-align: center;
-    padding: 120px 20px;
+    padding: 125px 20px;
 }
 
 .hero-content h2 {
