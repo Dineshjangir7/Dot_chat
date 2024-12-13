@@ -1,0 +1,16 @@
+{
+  "name": "ExploreRaj",
+  "short_name": "By Dinesh",
+  "description": "Description of your web app",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "icon.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
