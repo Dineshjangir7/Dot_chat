@@ -1,234 +1,208 @@
-/* Reset some default styling */
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body and Font Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to top left, #3e8e41, #68a0b7); /* Beautiful gradient with fresh colors */
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to right, #5f2c82, #49a09d);
+    color: #fff;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* Center-align pages */
-.page {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    display: none;
+    padding: 1px 0;
     text-align: center;
-    overflow-y: auto;
-    border-radius: 12px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
-.visible {
-    display: block;
+header .logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #fff;
 }
 
-h1 {
+header nav ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+header nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Hero Section */
+.hero {
+    background: url('main.webp') no-repeat center center/cover;
+    color: #DCC7B6;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    font-family: 'Playfair Display', serif;
     margin-bottom: 10px;
-    color: #f7f7f7; /* Soft white color for the titles */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 10px;
+}
+
+.hero-content p {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.cta-btn {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff8c00, #ffcc00);
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+
+.cta-btn:hover {
+    background: linear-gradient(90deg, #ffcc00, #ff8c00);
+    transform: scale(1.1);
+}
+
+/* Section Styles */
+section {
+    padding: 0px 20px;
+    text-align: center;
+    margin-top: 90px;
 }
 
 h2 {
-    font-style: italic;
-    color: #f7f7f7;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
 }
 
-/* Input containers styling */
-.input-container {
+/* Destination Cards */
+.destinations-container, .crafts-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.destination-card, .craft-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.destination-card img, .craft-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.destination-card:hover, .craft-card:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+
+.cta-btn2 {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff8c00, #ffcc00);
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+/* Developer Section */
+.developer-section {
+    background: linear-gradient(to bottom, #3366ff 45%, #cc99ff 100%);
+    color: #333;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.developer-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.developer-section p {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* Contact Form */
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Styling input fields and buttons */
-input, button {
-    width: 80%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: #ffffff;
-    color: #333;
-}
-
-/* Rounded button style */
-.rounded-btn {
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for buttons */
-    color: white;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.rounded-btn:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb);
-}
-
-/* Suggestions dropdown */
-.suggestions {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-height: 150px;
-    overflow-y: auto;
-    position: absolute;
-    width: 80%;
-    display: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 10;
-    left: 10%;
-}
-
-.suggestions div {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.suggestions div:hover {
-    background-color: #ddd;
-}
-
-/* Ride Results Styling */
-#ride-results div {
-    background: #ffffff;
-    color: black;
+form input, form textarea {
+    width: 100%;
     padding: 15px;
     margin: 10px 0;
-    border-radius: 15px;
-    text-align: left;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1em;
 }
 
-/* Navigation Bar */
-.nav-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #333;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    z-index: 100;
-    border-radius: 20px 20px 0 0;
-}
-
-.nav-btn {
-    background: none;
-    color: white;
-    font-size: 18px;
+form button {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff8c00, #ffcc00);
+    color: #333;
     border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
     cursor: pointer;
 }
 
-.nav-btn:hover {
-    color: #4caf50;
+form button:hover {
+    background: linear-gradient(90deg, #ffcc00, #ff8c00);
+    transform: scale(1.1);
 }
 
-.nav-btn i {
-    margin-right: 5px;
-}
-
-/* Contact Developer Page */
-#contact-developer-page {
-    background: linear-gradient(to bottom, #00c6ff, #0072ff);
-}
-
-.warning {
-    margin-top: 20px;
-    color: yellow;
-    font-size: 14px;
-}
-
-.warning p {
-    font-weight: bold;
-}
-
-/* Profile Section Styling */
-#profile-page p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-/* Floating Contact Developer Button */
-#contact-developer-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #4caf50;
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    font-size: 20px;
-    border-radius: 50%;
-    display: none;  /* Initially hidden */
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 100;
-}
-
-#contact-developer-btn:hover {
-    background-color: #45a049;
-}
-
-/* Page Bottom Padding for Scrolling */
-.page {
-    padding-bottom: 80px; /* Increased space for easier scrolling */
-}
-
-/* Hide nav-bar initially */
-#nav-bar {
-    display: none;
-}
-
-/* Style when showing the nav-bar */
-#nav-bar.visible {
-    display: flex;
-}
-
-/* Profile Section Styling */
-#profile-page p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-/* Button Color Customization */
-button {
-    background-color: #4caf50;
-    color: white;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* No Rides Available Popup */
-#no-rides-popup {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px;
-    background-color: #ff4d4d;
-    color: white;
-    border-radius: 8px;
-    font-size: 18px;
-    display: none;
-    z-index: 150;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    padding: 20px 0;
+    text-align: center;
 }

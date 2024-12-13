@@ -3,107 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Set Go</title>
+    <meta name="description" content="Explore Rajasthan with personalized travel experiences, virtual tours, and authentic local crafts.">
+    <title>Explore Raj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <h1>Explore Raj</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#local-crafts">Local Crafts</a></li>
+                <li><a href="#virtual-tours">Virtual Tours</a></li>
+                <li><a href="#developer">About Developer</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Login Screen -->
-<div id="login-page" class="page visible">
-    <h1>Get Set Go!</h1>
-    <h2>by Dinesh</h2>
-    <input type="tel" id="phone" placeholder="Enter your 10-digit phone number" maxlength="10">
-    <button class="rounded-btn" onclick="login()">Login</button>
-</div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Discover the Hidden Gems of Rajasthan</h2>
+            <p>Your personalized travel adventure awaits!</p>
+            <a href="#destinations" class="cta-btn">Start Your Journey</a>
+        </div>
+    </section>
 
-<!-- Home Page -->
-<div id="home-page" class="page">
-    <h2>Find a Ride</h2>
-    <div class="input-container">
-        <input type="text" id="from" placeholder="From" onkeyup="showSuggestions('from')" class="rounded-input">
-        <div id="from-suggestions" class="suggestions"></div>
+    <section id="destinations">
+        <h2>Explore Popular Destinations</h2>
+        <div class="destinations-container">
+            <div class="destination-card">
+                <img src="Jaipur.webp" alt="Jaipur">
+                <h3>Jaipur</h3>
+                <p>The Pink City - A blend of royalty and history.</p>
+            </div>
+            <div class="destination-card">
+                <img src="Udaipur.webp" alt="Udaipur">
+                <h3>Udaipur</h3>
+                <p>The City of Lakes - Known for its stunning palaces.</p>
+            </div>
+            <div class="destination-card">
+                <img src="Jaisalmer.jpg" alt="Jaisalmer">
+                <h3>Jaisalmer</h3>
+                <p>The Golden City - Experience the desert charm.</p>
+            </div>
+        </div>
+   
+
+    <section id="local-crafts">
+        <h2>Authentic Rajasthani Crafts</h2>
+        <p>Support local artisans by purchasing unique handcrafted products.</p>
+        <div class="crafts-container">
+            <div class="craft-card">
+                <img src="pot.jpg" alt="Craft 1">
+                <h3>Traditional Pottery</h3>
+            </div>
+            <div class="craft-card">
+                <img src="tt.jpg" alt="Craft 2">
+                <h3>Handmade Textiles</h3>
+            </div>
+            <div class="craft-card">
+                <img src="jewel.jpg" alt="Craft 3">
+                <h3>Jewelry</h3>
+            </div>
+        </div>
+    </section>
+ </section>
+
+    <section id="virtual-tours" class="cta-section">
+        <h2>Experience Rajasthan Virtually</h2>
         
-        <input type="text" id="to" placeholder="To" onkeyup="showSuggestions('to')" class="rounded-input">
-        <div id="to-suggestions" class="suggestions"></div>
+        <p>Take a 360° tour of our historical landmarks.</p>
+        <br>
+        <a href="#" class="cta-btn2">Explore Virtual Tours</a>
 
-        <input type="date" id="date" class="rounded-input">
-        <button class="rounded-btn" onclick="searchRides()">Search</button>
-    </div>
-    <div id="ride-results"></div>
-</div>
+       
+    </section>
 
-<!-- Post Ride Page -->
-<div id="post-ride-page" class="page">
-    <h2>Post a Ride</h2>
-    <div class="input-container">
-        <input type="text" id="post-from" placeholder="From" onkeyup="showSuggestions('post-from')" class="rounded-input">
-        <div id="post-from-suggestions" class="suggestions"></div>
-        
-        <input type="text" id="post-to" placeholder="To" onkeyup="showSuggestions('post-to')" class="rounded-input">
-        <div id="post-to-suggestions" class="suggestions"></div>
-        
-        <input type="number" id="seats" placeholder="Seats Available" class="rounded-input">
-        <input type="number" id="price" placeholder="Price per Seat" class="rounded-input">
-        <input type="text" id="vehicle" placeholder="Vehicle Model" onkeyup="showVehicleSuggestions()" class="rounded-input">
-        <div id="vehicle-suggestions" class="suggestions"></div>
-        <input type="tel" id="contact" placeholder="Contact Number" class="rounded-input">
-        <input type="date" id="ride-date" class="rounded-input">
-        
-        <!-- AM/PM time selection -->
-        <input type="number" id="depart-hour" placeholder="Hour" min="1" max="12" class="rounded-input">
-        <input type="number" id="depart-minute" placeholder="Minute" min="0" max="59" class="rounded-input">
-        <select id="depart-time" class="rounded-input">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
-        
-        <input type="text" id="name" placeholder="Driver's Name (Required)" class="rounded-input">
-        
-        <button class="rounded-btn" onclick="postRide()">Post Ride</button>
-    </div>
-</div>
+    <section id="developer" class="developer-section">
+        <h2>About the Developer</h2>
+        <p>Hi, I'm Dinesh, the creator of Explore Raj. I am passionate about promoting the culture, heritage, and beauty of Rajasthan. I built this platform to help travellers explore Rajasthan in a more personalized and meaningful way. I'm excited to share the hidden gems and authentic experiences of this amazing state!</p>
+    </section>
 
-<!-- Profile Page -->
-<div id="profile-page" class="page">
-    <h2>Your Profile</h2>
-    <p id="profile-name">Name: <span id="profile-name-text">Not Set</span></p>
-    <p id="profile-phone">Phone Number: <span id="profile-phone-text">Not Set</span></p>
-    <button class="rounded-btn" onclick="showPage('home-page')">Go to Home</button>
-    <button class="rounded-btn" onclick="showPage('set-name-page')">Set Name</button> <!-- Button to set name -->
-</div>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have any questions? Reach out to us!</p>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-<!-- Set Name Page -->
-<div id="set-name-page" class="page">
-    <h2>Set Your Name</h2>
-    <input type="text" id="set-name-input" placeholder="Enter your name">
-    <button class="rounded-btn" onclick="saveProfile()">Save</button>
-</div>
+    <footer>
+        <p>&copy; 2024 Explore Raj By Dinesh Jangir. All rights reserved.</p>
+    </footer>
 
-<!-- Contact Developer Page -->
-<div id="contact-developer-page" class="page">
-    <h2>Contact Developer</h2>
-    <p>Name: Dinesh Jangir</p>
-    <p>Telegram: @dj3680</p>
-    <div class="warning">
-        <p>⚠️ Please travel at your own risk, I’ll not be responsible for any accidents or scams. ⚠️</p>
-    </div>
-    <button class="rounded-btn" onclick="showPage('home-page')">Go to Home</button>
-</div>
-
-<!-- No Rides Popup -->
-<div id="no-rides-popup">No rides available on this date for this route</div>
-
-<!-- Navigation Bar -->
-<div id="nav-bar" class="nav-bar visible">
-    <button class="nav-btn" onclick="showPage('home-page')"><i class="fas fa-home"></i> Home</button>
-    <button class="nav-btn" onclick="showPage('post-ride-page')"><i class="fas fa-car"></i> Post Ride</button>
-    <button class="nav-btn" onclick="showPage('profile-page')"><i class="fas fa-user"></i> Profile</button>
-</div>
-
-<!-- Floating Contact Developer Button -->
-<button id="contact-developer-btn" onclick="showPage('contact-developer-page')">📱</button>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
